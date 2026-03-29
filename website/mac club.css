@@ -1,0 +1,110 @@
+:root {
+  --ms-blue: #00a4ef;
+  --ms-green: #7fba00;
+  --ms-yellow: #ffb900;
+  --ms-red: #f25022;
+  --dark: #0a0a12;
+  --dark-2: #111120;
+  --dark-3: #181830;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --text-primary: #f0f0f8;
+  --text-muted: rgba(240, 240, 248, 0.55);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 16px;
+  --tr: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--ms-blue); border-radius: 10px; }
+
+/* Page System */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* Navigation */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 70px;
+  background: rgba(10, 10, 18, 0.87); backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+.ms-logo { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; width: 28px; height: 28px; }
+.ms-logo span:nth-child(1) { background: #f25022; }
+.ms-logo span:nth-child(2) { background: #7fba00; }
+.ms-logo span:nth-child(3) { background: #00a4ef; }
+.ms-logo span:nth-child(4) { background: #ffb900; }
+
+.nav-links { display: flex; align-items: center; gap: .25rem; list-style: none; }
+.nav-links a {
+  font-size: .88rem; font-weight: 500; color: var(--text-muted);
+  text-decoration: none; padding: .45rem .9rem; border-radius: 8px; transition: all var(--tr);
+}
+.nav-links a:hover { color: var(--text-primary); background: var(--glass); }
+.nav-cta { background: var(--ms-blue) !important; color: #fff !important; font-weight: 600 !important; }
+
+/* Hero Section */
+#hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; padding: 100px 2rem 4rem;
+}
+.hero-bg { position: absolute; inset: 0; background: url('pic01.jpg') center/cover; filter: brightness(.22); }
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(0,164,239,.06) 1px, transparent 1px), 
+                    linear-gradient(90deg, rgba(0,164,239,.06) 1px, transparent 1px);
+  background-size: 60px 60px; animation: gridScroll 20s linear infinite;
+}
+
+@keyframes gridScroll { from { background-position: 0 0; } to { background-position: 60px 60px; } }
+
+/* Cards & Grids */
+.milestones-grid, .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.event-card, .milestone-card, .team-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); overflow: hidden; transition: all var(--tr);
+}
+.event-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.3); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: .8rem 1.8rem;
+  border-radius: 10px; font-weight: 600; text-decoration: none; transition: all var(--tr); cursor: pointer;
+}
+.btn-primary { background: var(--ms-blue); color: #fff; border: none; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,164,239,.3); }
+
+/* Animations */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* Responsive */
+@media(max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 70px; left: 0; right: 0; background: var(--dark-2); }
+  .milestones-grid, .events-grid { grid-template-columns: 1fr; }
+}

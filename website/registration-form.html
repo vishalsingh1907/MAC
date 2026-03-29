@@ -1,0 +1,159 @@
+<!-- Registration Form Component - Add to Event Detail Page -->
+<div id="registration-form" class="registration-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeRegistration()">×</button>
+    <h2>Register for Event</h2>
+    <form id="eventRegForm" onsubmit="handleRegistration(event)">
+      <input type="hidden" id="eventIdInput" value="">
+      
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" name="firstName" required placeholder="John">
+      </div>
+      
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" name="lastName" required placeholder="Doe">
+      </div>
+      
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="you@example.com">
+      </div>
+      
+      <div class="form-group">
+        <label>Department</label>
+        <select name="department" required>
+          <option value="">Select Department</option>
+          <option value="CS">Computer Science</option>
+          <option value="IT">Information Technology</option>
+          <option value="ECE">Electronics & Communication</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" required placeholder="9876543210">
+      </div>
+      
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+        <i class="fa-solid fa-check"></i> Confirm Registration
+      </button>
+    </form>
+    <div class="success-msg" id="registration-success" style="display:none; margin-top: 1rem; padding: 1rem; background: rgba(127, 186, 0, 0.2); border-left: 3px solid #7fba00; border-radius: 6px;">
+      <i class="fa-solid fa-check-circle"></i> Registration successful! Check your email for details.
+    </div>
+  </div>
+</div>
+
+<!-- CSS for Registration Form -->
+<style>
+.registration-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.registration-modal.open {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--dark-2);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--tr);
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+}
+
+.modal-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.8rem 1rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border var(--tr), background var(--tr);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--ms-blue);
+  background: rgba(0,164,239,0.05);
+}
+
+.success-msg {
+  color: var(--ms-green);
+  text-align: center;
+  font-weight: 500;
+}
+
+.success-msg i {
+  color: var(--ms-green);
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .modal-content {
+    padding: 1.5rem;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+}
+</style>
