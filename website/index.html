@@ -262,7 +262,7 @@
   <!-- Firebase Configuration -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, getDocs, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAv_5f3I9Sj2NRlHXMk-yCL-juCyjN3cps",
@@ -277,6 +277,7 @@
     const db = getFirestore(app);
     
     window.db = db;
+    window.fs = { collection, addDoc, getDocs, doc, setDoc, serverTimestamp };
     console.log("✓ Firebase initialized successfully!");
   </script>
 
@@ -703,19 +704,21 @@
     <div class="apply-card">
       <h2>Membership Application</h2>
       <p class="sub">Open to all Lingaya's Vidyapeeth students. No prior experience required.</p>
-      <div class="form-group">
-        <div class="form-field"><label>First Name *</label><input type="text" placeholder="Aakash" /></div>
-        <div class="form-field"><label>Last Name *</label><input type="text" placeholder="Sharma" /></div>
-        <div class="form-field"><label>Email Address *</label><input type="email" placeholder="you@lingayasvidyapeeth.edu.in" /></div>
-        <div class="form-field"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210" /></div>
-        <div class="form-field"><label>Department *</label><select><option value="">Select department</option><option>Computer Science & Engineering</option><option>Information Technology</option><option>Electronics & Communication</option><option>Mechanical Engineering</option><option>Civil Engineering</option><option>MBA</option><option>Other</option></select></div>
-        <div class="form-field"><label>Year of Study *</label><select><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Postgraduate</option></select></div>
-        <div class="form-field full"><label>Student / Enrollment ID</label><input type="text" placeholder="e.g. LV21CS001" /></div>
-        <div class="form-field full"><label>Area of Interest *</label><select><option value="">Select interest</option><option>Cloud Computing (Azure)</option><option>Artificial Intelligence & ML</option><option>Web & App Development</option><option>Data Science & Power BI</option><option>Cybersecurity</option><option>No-Code / Power Platform</option><option>Event Management & Outreach</option></select></div>
-        <div class="form-field full"><label>Why do you want to join? *</label><textarea placeholder="Tell us about yourself and what you'd like to contribute..."></textarea></div>
-        <div class="form-field full"><label>Prior experience with Microsoft tools (optional)</label><textarea placeholder="Azure, GitHub, Power BI, etc. — leave blank if none." style="min-height:80px"></textarea></div>
-      </div>
-      <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:.9rem" onclick="submitOk('apply-ok')"><i class="fa-solid fa-paper-plane"></i> Submit Application</button>
+      <form id="membershipRegForm" onsubmit="submitMembershipHandler(event)">
+        <div class="form-group">
+          <div class="form-field"><label>First Name *</label><input type="text" id="app-fname" required placeholder="Aakash" /></div>
+          <div class="form-field"><label>Last Name *</label><input type="text" id="app-lname" required placeholder="Sharma" /></div>
+          <div class="form-field"><label>Email Address *</label><input type="email" id="app-email" required placeholder="you@lingayasvidyapeeth.edu.in" /></div>
+          <div class="form-field"><label>Phone Number</label><input type="tel" id="app-phone" placeholder="+91 98765 43210" /></div>
+          <div class="form-field"><label>Department *</label><select id="app-dept" required><option value="">Select department</option><option>Computer Science & Engineering</option><option>Information Technology</option><option>Electronics & Communication</option><option>Mechanical Engineering</option><option>Civil Engineering</option><option>MBA</option><option>Other</option></select></div>
+          <div class="form-field"><label>Year of Study *</label><select id="app-year" required><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Postgraduate</option></select></div>
+          <div class="form-field full"><label>Student / Enrollment ID</label><input type="text" id="app-studentid" placeholder="e.g. LV21CS001" /></div>
+          <div class="form-field full"><label>Area of Interest *</label><select id="app-interest" required><option value="">Select interest</option><option>Cloud Computing (Azure)</option><option>Artificial Intelligence & ML</option><option>Web & App Development</option><option>Data Science & Power BI</option><option>Cybersecurity</option><option>No-Code / Power Platform</option><option>Event Management & Outreach</option></select></div>
+          <div class="form-field full"><label>Why do you want to join? *</label><textarea id="app-reason" required placeholder="Tell us about yourself and what you'd like to contribute..."></textarea></div>
+          <div class="form-field full"><label>Prior experience with Microsoft tools (optional)</label><textarea id="app-experience" placeholder="Azure, GitHub, Power BI, etc. — leave blank if none." style="min-height:80px"></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:.9rem"><i class="fa-solid fa-paper-plane"></i> Submit Application</button>
+      </form>
       <div class="success-msg" id="apply-ok"><i class="fa-solid fa-circle-check" style="margin-right:8px"></i><strong>Application submitted!</strong> Thank you. We'll review and reach out within 3 working days.</div>
     </div>
   </div>
@@ -758,14 +761,16 @@
     <div class="apply-card">
       <h2>Apply for This Event</h2>
       <p class="sub" id="ev-form-sub">Fill in your details to register.</p>
-      <div class="form-group">
-        <div class="form-field"><label>Full Name *</label><input type="text" placeholder="Your full name" /></div>
-        <div class="form-field"><label>Email *</label><input type="email" placeholder="your@email.com" /></div>
-        <div class="form-field"><label>Department *</label><select><option value="">Select</option><option>Computer Science & Engineering</option><option>Information Technology</option><option>Electronics & Communication</option><option>Mechanical Engineering</option><option>Civil Engineering</option><option>MBA</option><option>Other</option></select></div>
-        <div class="form-field"><label>Year of Study *</label><select><option value="">Select</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Postgraduate</option></select></div>
-        <div class="form-field full"><label>Why do you want to attend?</label><textarea placeholder="Briefly tell us what you hope to gain..."></textarea></div>
-      </div>
-      <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:.9rem" onclick="submitOk('ev-ok')"><i class="fa-solid fa-paper-plane"></i> Submit Registration</button>
+      <form id="inlineEventRegForm" onsubmit="submitInlineEventHandler(event)">
+        <div class="form-group">
+          <div class="form-field"><label>Full Name *</label><input type="text" id="ev-name" required placeholder="Your full name" /></div>
+          <div class="form-field"><label>Email *</label><input type="email" id="ev-email" required placeholder="your@email.com" /></div>
+          <div class="form-field"><label>Department *</label><select id="ev-dept" required><option value="">Select</option><option>Computer Science & Engineering</option><option>Information Technology</option><option>Electronics & Communication</option><option>Mechanical Engineering</option><option>Civil Engineering</option><option>MBA</option><option>Other</option></select></div>
+          <div class="form-field"><label>Year of Study *</label><select id="ev-year" required><option value="">Select</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Postgraduate</option></select></div>
+          <div class="form-field full"><label>Why do you want to attend?</label><textarea id="ev-reason" placeholder="Briefly tell us what you hope to gain..."></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:.9rem"><i class="fa-solid fa-paper-plane"></i> Submit Registration</button>
+      </form>
       <div class="success-msg" id="ev-ok"><i class="fa-solid fa-circle-check" style="margin-right:8px"></i><strong>Registered!</strong> You're on the list. We'll send a confirmation before the event date.</div>
     </div>
   </div>
@@ -836,6 +841,7 @@ function goHome(){showPage('home')}
 function showEvent(id){
   const e=EVT[id]; if(!e)return;
   document.getElementById('ev-title').textContent=e.title;
+  document.getElementById('ev-title').dataset.eventId = id;
   const tg=document.getElementById('ev-tag'); tg.textContent=e.tag; tg.className='event-tag '+e.tagCls;
   document.getElementById('ev-date').textContent=e.date;
   document.getElementById('ev-loc').textContent=e.loc;
