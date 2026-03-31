@@ -54,7 +54,7 @@
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,164,239,.18) 0%,transparent 50%,rgba(242,80,34,.08) 100%)}
     .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,164,239,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,164,239,.06) 1px,transparent 1px);background-size:60px 60px;animation:gridScroll 20s linear infinite}
     @keyframes gridScroll{0%{background-position:0 0}100%{background-position:60px 60px}}
-    .hero-content{position:relative;z-index:2;max-width:860px;text-align:center}
+    .hero-content{position:relative;z-index:2;width:100%;max-width:860px;text-align:center}
     .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(10px);padding:.4rem 1rem;border-radius:100px;font-size:.8rem;font-weight:500;color:var(--ms-blue);letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.8rem;animation:fadeUp .8s both}
     .hero-title{font-family:var(--font-display);font-size:clamp(2rem,8vw,5rem);font-weight:800;line-height:1.08;margin-bottom:1.5rem;animation:fadeUp .8s .15s both}
     .hero-sub{font-size:clamp(1rem,2vw,1.15rem);color:var(--text-muted);max-width:580px;margin:0 auto 2.5rem;animation:fadeUp .8s .3s both}
@@ -252,9 +252,11 @@
       .form-field.full{grid-column:span 1}
     }
     @media(max-width:540px){
-      #hero { padding-left: 1.2rem; padding-right: 1.2rem; }
-      .hero-title { font-size: clamp(2.2rem, 11vw, 3rem); }
-      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; width: 100%; }
+      #hero { padding-left: 1rem; padding-right: 1rem; }
+      .hero-title { font-size: clamp(1.8rem, 8.5vw, 2.5rem); word-break: break-word; hyphens: auto; }
+      .hero-sub { font-size: 0.95rem; line-height: 1.5; padding: 0 0.5rem; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 0.5rem; width: 100%; box-sizing: border-box; }
+      .stat-item { padding: 0; width: 100%; }
       .tech-grid{grid-template-columns:repeat(2,1fr)}
       .footer-inner{grid-template-columns:1fr}
       .about-features{grid-template-columns:1fr}
