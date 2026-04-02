@@ -1298,6 +1298,38 @@
       background: var(--ms-blue)
     }
 
+    /* SEE MORE CARD */
+    .see-more-card {
+      background: var(--glass) !important;
+      border: 1px dashed var(--ms-blue) !important;
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-align: center;
+      transition: all var(--tr) !important;
+    }
+
+    .see-more-card:hover {
+      background: rgba(0, 164, 239, 0.1) !important;
+      border-style: solid !important;
+      transform: translateY(-5px);
+    }
+
+    .see-more-card i {
+      font-size: 2rem;
+      color: var(--ms-blue);
+    }
+
+    .see-more-card span {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--ms-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
     /* EVENT DETAIL PAGE */
     .ev-hero {
       padding: 120px 2rem 4rem;
@@ -1462,6 +1494,20 @@
       cursor: pointer
     }
 
+    /* INLINE LINKS */
+    .inline-link {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(0, 164, 239, 0.3);
+      transition: all var(--tr);
+    }
+
+    .inline-link:hover {
+      color: var(--ms-blue);
+      text-decoration-color: var(--ms-blue);
+    }
+
     /* RESPONSIVE */
     @media(max-width:900px) {
       .nav-links {
@@ -1614,7 +1660,9 @@
     <div class="nav-brand" onclick="goHome()">
       <img src="photos on website/lingayas-logo.jpg" alt="Lingaya's Logo"
         style="width:28px; height:28px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:4px; padding:2px;" />
-      <div class="nav-brand-text">Microsoft Ambassadors Club<small>Centre of Excellence · Lingaya's Vidyapeeth</small>
+      <div class="nav-brand-text">Microsoft Ambassadors Club<small>Centre of Excellence · <a
+            href="https://www.lingayasvidyapeeth.edu.in/" target="_blank" class="inline-link">Lingaya's
+            Vidyapeeth</a></small>
       </div>
     </div>
     <ul class="nav-links" id="navLinks">
@@ -1636,7 +1684,9 @@
       <div class="hero-overlay"></div>
       <div class="hero-grid"></div>
       <div class="hero-content">
-        <div class="hero-badge"><i class="fa-solid fa-star"></i> Centre of Excellence · Lingaya's Vidyapeeth, Faridabad
+        <div class="hero-badge"><i class="fa-solid fa-star"></i> Centre of Excellence · <a
+            href="https://www.lingayasvidyapeeth.edu.in/" target="_blank" class="inline-link"
+            style="text-decoration:none">Lingaya's Vidyapeeth</a>, Faridabad
         </div>
         <h1 class="hero-title">Microsoft<br /><span class="accent-blue">Ambassadors</span> <span
             class="accent-green">Club</span></h1>
@@ -1683,7 +1733,8 @@
           <div class="reveal">
             <span class="section-label">Who We Are</span>
             <h2 class="section-title">Empowering Students Through <span class="accent-blue">Technology</span></h2>
-            <p class="section-desc">The Microsoft Ambassadors Club at Lingaya's Vidyapeeth is an official chapter under
+            <p class="section-desc">The Microsoft Ambassadors Club at <a href="https://www.lingayasvidyapeeth.edu.in/"
+                target="_blank" class="inline-link">Lingaya's Vidyapeeth</a> is an official chapter under
               the Centre of Excellence. We are a growing and passionate community focused on learning by doing.</p>
             <p class="section-desc" style="margin-top:-1.5rem">We host workshops, sessions, and activities that help
               students gain practical experience with Microsoft tools, cloud computing, and modern collaboration — right
@@ -1732,7 +1783,8 @@
       <div class="section-inner">
         <span class="section-label reveal">The People</span>
         <h2 class="section-title reveal">Meet Our <span class="accent-blue">Team</span></h2>
-        <p class="section-desc reveal">Student leaders driving the Microsoft Ambassadors Club at Lingaya's Vidyapeeth.
+        <p class="section-desc reveal">Student leaders driving the Microsoft Ambassadors Club at <a
+            href="https://www.lingayasvidyapeeth.edu.in/" target="_blank" class="inline-link">Lingaya's Vidyapeeth</a>.
         </p>
 
         <!-- COORDINATORS -->
@@ -1868,7 +1920,8 @@
               src="photos on website/ETV-BHARAT-on-CAMPUS.jpg" alt="ETV BHARAT on CAMPUS" />
             <div class="gallery-item-overlay"><span>ETV BHARAT on CAMPUS</span></div>
           </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/1st-Prototype-of-the-Spiderobot.jpg')"><img
+          <div class="gallery-item reveal"
+            onclick="openLightbox('photos on website/1st-Prototype-of-the-Spiderobot.jpg')"><img
               src="photos on website/1st-Prototype-of-the-Spiderobot.jpg" alt="1st Prototype of the Spiderobot" />
             <div class="gallery-item-overlay"><span>1st Prototype of the Spiderobot</span></div>
           </div>
@@ -1876,12 +1929,14 @@
               src="photos on website/Talk-on-Embedded-systems.jpg" alt="Talk on Embedded systems" />
             <div class="gallery-item-overlay"><span>Talk on Embedded systems</span></div>
           </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/The-very-first-project-of-MAC-family.jpg')"><img
-              src="photos on website/The-very-first-project-of-MAC-family.jpg" alt="The very first project of MAC family" />
+          <div class="gallery-item reveal"
+            onclick="openLightbox('photos on website/The-very-first-project-of-MAC-family.jpg')"><img
+              src="photos on website/The-very-first-project-of-MAC-family.jpg"
+              alt="The very first project of MAC family" />
             <div class="gallery-item-overlay"><span>The very first project of MAC family</span></div>
           </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/With-the-upcoming-prodigies.jpg')"><img
-              src="photos on website/With-the-upcoming-prodigies.jpg" alt="With the upcoming prodigies" />
+          <div class="gallery-item reveal" onclick="openLightbox('photos on website/With-the-upcoming-prodigies.jpg')">
+            <img src="photos on website/With-the-upcoming-prodigies.jpg" alt="With the upcoming prodigies" />
             <div class="gallery-item-overlay"><span>With the upcoming prodigies</span></div>
           </div>
           <div class="gallery-item reveal" onclick="openLightbox('photos on website/IASC-internal-demo.jpg')"><img
@@ -1892,26 +1947,9 @@
               src="photos on website/Robotic-Arm-Project.jpg" alt="Robotic Arm Project" />
             <div class="gallery-item-overlay"><span>Robotic Arm Project</span></div>
           </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/pic06.jpg')"><img src="photos on website/pic06.jpg" alt="" />
-            <div class="gallery-item-overlay"><span>GitHub Workshop</span></div>
-          </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/pic07.jpg')"><img src="photos on website/pic07.jpg" alt="" />
-            <div class="gallery-item-overlay"><span>Learning Session</span></div>
-          </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/pic08.jpg')"><img src="photos on website/pic08.jpg" alt="" />
-            <div class="gallery-item-overlay"><span>Club Meetup</span></div>
-          </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/pic09.jpg')"><img src="photos on website/pic09.jpg" alt="" />
-            <div class="gallery-item-overlay"><span>New Photo 1</span></div>
-          </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/pic10.jpg')"><img src="photos on website/pic10.jpg" alt="" />
-            <div class="gallery-item-overlay"><span>New Photo 2</span></div>
-          </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/pic11.jpg')"><img src="photos on website/pic11.jpg" alt="" />
-            <div class="gallery-item-overlay"><span>New Photo 3</span></div>
-          </div>
-          <div class="gallery-item reveal" onclick="openLightbox('photos on website/pic12.jpg')"><img src="photos on website/pic12.jpg" alt="" />
-            <div class="gallery-item-overlay"><span>New Photo 4</span></div>
+          <div class="gallery-item reveal see-more-card" onclick="showPage('full-gallery')">
+            <i class="fa-solid fa-images"></i>
+            <span>See More<br>Photos</span>
           </div>
         </div>
       </div>
@@ -1949,7 +1987,9 @@
         <h2 class="section-title reveal" style="text-align:center;font-size:clamp(2rem,4vw,3.2rem)">Ready to Start
           Your<br /><span class="accent-blue">Ambassador Journey?</span></h2>
         <p style="color:var(--text-muted);text-align:center;font-size:1.05rem;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto"
-          class="reveal">Applications are open to all Lingaya's Vidyapeeth students. No prior experience needed.</p>
+          class="reveal">Applications are open to all <a href="https://www.lingayasvidyapeeth.edu.in/" target="_blank"
+            class="inline-link" style="color:var(--text-muted)">Lingaya's Vidyapeeth</a> students. No prior experience
+          needed.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal">
           <button class="btn btn-primary" onclick="showPage('apply')" style="font-size:1rem;padding:.9rem 2rem"><i
               class="fa-solid fa-paper-plane"></i> Apply Now</button>
@@ -1972,7 +2012,9 @@
               <div class="contact-detail">
                 <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
                 <div class="contact-detail-text"><strong>Address</strong><span>Centre of Excellence, Block
-                    D<br />Lingaya's Vidyapeeth (Deemed to be University)<br />Nachauli, Jasana Road, Faridabad, Haryana
+                    D<br /><a href="https://www.lingayasvidyapeeth.edu.in/" target="_blank"
+                      class="inline-link">Lingaya's Vidyapeeth</a> (Deemed to be University)<br />Nachauli, Jasana Road,
+                    Faridabad, Haryana
                     — 121002</span></div>
               </div>
               <div class="contact-detail">
@@ -2018,20 +2060,16 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <div class="nav-brand" onclick="goHome()" style="cursor:pointer">
-            <img src="lingayas-logo.jpg" alt="Lingaya's Logo"
+            <img src="photos on website/lingayas-logo.jpg" alt="Lingaya's Logo"
               style="width:28px; height:28px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:4px; padding:2px;" />
-            <div class="nav-brand-text" style="font-size:.95rem">Microsoft Ambassadors Club<small>Lingaya's
-                Vidyapeeth</small></div>
+            <div class="nav-brand-text" style="font-size:.95rem">Microsoft Ambassadors Club<small><a
+                  href="https://www.lingayasvidyapeeth.edu.in/" target="_blank" class="inline-link"
+                  style="text-decoration:none">Lingaya's
+                  Vidyapeeth</a></small></div>
           </div>
-          <p>An official Microsoft Learn Student Ambassadors chapter under the Centre of Excellence at Lingaya's
-            Vidyapeeth (Deemed to be University), Faridabad, Haryana.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-          </div>
+          <p>The Microsoft Ambassadors Club at <a href="https://www.lingayasvidyapeeth.edu.in/" target="_blank"
+              class="inline-link">Lingaya's Vidyapeeth</a> (Deemed to be University), Faridabad, Haryana, is a community
+            dedicated to technological innovation and student excellence.</p>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
@@ -2043,18 +2081,7 @@
             <li><a onclick="showPage('apply')">Apply Now</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="https://learn.microsoft.com" target="_blank" rel="noopener">Microsoft Learn</a></li>
-            <li><a href="https://mvp.microsoft.com/studentambassadors" target="_blank" rel="noopener">MLSA Program</a>
-            </li>
-            <li><a href="https://azure.microsoft.com" target="_blank" rel="noopener">Azure Portal</a></li>
-            <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://www.lingayasvidyapeeth.edu.in" target="_blank" rel="noopener">University Website</a>
-            </li>
-          </ul>
-        </div>
+
         <div class="footer-col">
           <h4>University</h4>
           <ul>
@@ -2068,9 +2095,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2025 Microsoft Ambassadors Club, Lingaya's Vidyapeeth. All rights reserved.</span>
-        <span>Part of the <a href="https://mvp.microsoft.com/studentambassadors" target="_blank" rel="noopener">MLSA
-            Global Program</a></span>
+        <span>&copy; 2026 Microsoft Ambassadors Club, <a href="https://www.lingayasvidyapeeth.edu.in/" target="_blank"
+            class="inline-link" style="text-decoration:none">Lingaya's Vidyapeeth</a>. All rights reserved.</span>
       </div>
     </footer>
   </div><!-- /page-home -->
@@ -2092,7 +2118,8 @@
     <div style="padding:3rem 2rem;background:var(--dark-2)">
       <div class="apply-card">
         <h2>Membership Application</h2>
-        <p class="sub">Open to all Lingaya's Vidyapeeth students. No prior experience required.</p>
+        <p class="sub">Open to all <a href="https://www.lingayasvidyapeeth.edu.in/" target="_blank"
+            class="inline-link">Lingaya's Vidyapeeth</a> students. No prior experience required.</p>
         <form id="membershipRegForm" onsubmit="submitMembershipHandler(event)">
           <div class="form-group">
             <div class="form-field"><label>First Name *</label><input type="text" id="app-fname" required
@@ -2149,6 +2176,100 @@
       </div>
     </div>
     <div class="mini-footer">&copy; 2025 Microsoft Ambassadors Club, Lingaya's Vidyapeeth &nbsp;·&nbsp; <a
+        onclick="goHome()">Back to Home</a></div>
+  </div>
+
+  <!-- ═══════════════ FULL GALLERY PAGE ═══════════════ -->
+  <div class="page" id="page-full-gallery">
+    <div style="padding:120px 2rem 3rem;background:var(--dark-3)">
+      <div style="max-width:1100px;margin:0 auto">
+        <button class="back-link" onclick="goHome()"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
+        <div class="hero-badge" style="animation:none;margin-bottom:1.5rem"><i class="fa-solid fa-star"></i> Memory Lane
+        </div>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:1rem">
+          Club <span class="accent-blue">Gallery</span></h1>
+        <p style="color:var(--text-muted);font-size:1rem;max-width:600px">Explore all our events, meetups, and memories.
+        </p>
+      </div>
+    </div>
+    <div style="padding:4rem 2rem;background:var(--dark-2);min-height:80vh">
+      <div class="section-inner">
+        <!-- Gallery Grid for Full Gallery -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;"
+          id="full-gallery-grid">
+          <!-- Real Photos (7) -->
+          <div class="gallery-item reveal"
+            style="grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1;"
+            onclick="openLightbox('photos on website/ETV-BHARAT-on-CAMPUS.jpg')">
+            <img src="photos on website/ETV-BHARAT-on-CAMPUS.jpg" alt="ETV BHARAT on CAMPUS"
+              style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class="gallery-item-overlay"><span>ETV BHARAT on CAMPUS</span></div>
+          </div>
+          <div class="gallery-item reveal"
+            style="grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1;"
+            onclick="openLightbox('photos on website/1st-Prototype-of-the-Spiderobot.jpg')">
+            <img src="photos on website/1st-Prototype-of-the-Spiderobot.jpg" alt="1st Prototype of the Spiderobot"
+              style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class="gallery-item-overlay"><span>1st Prototype of the Spiderobot</span></div>
+          </div>
+          <div class="gallery-item reveal"
+            style="grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1;"
+            onclick="openLightbox('photos on website/Talk-on-Embedded-systems.jpg')">
+            <img src="photos on website/Talk-on-Embedded-systems.jpg" alt="Talk on Embedded systems"
+              style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class="gallery-item-overlay"><span>Talk on Embedded systems</span></div>
+          </div>
+          <div class="gallery-item reveal"
+            style="grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1;"
+            onclick="openLightbox('photos on website/The-very-first-project-of-MAC-family.jpg')">
+            <img src="photos on website/The-very-first-project-of-MAC-family.jpg"
+              alt="The very first project of MAC family" style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class="gallery-item-overlay"><span>The very first project of MAC family</span></div>
+          </div>
+          <div class="gallery-item reveal"
+            style="grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1;"
+            onclick="openLightbox('photos on website/With-the-upcoming-prodigies.jpg')">
+            <img src="photos on website/With-the-upcoming-prodigies.jpg" alt="With the upcoming prodigies"
+              style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class="gallery-item-overlay"><span>With the upcoming prodigies</span></div>
+          </div>
+          <div class="gallery-item reveal"
+            style="grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1;"
+            onclick="openLightbox('photos on website/IASC-internal-demo.jpg')">
+            <img src="photos on website/IASC-internal-demo.jpg" alt="iasc internal demo"
+              style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class="gallery-item-overlay"><span>iasc internal demo</span></div>
+          </div>
+          <div class="gallery-item reveal"
+            style="grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1;"
+            onclick="openLightbox('photos on website/Robotic-Arm-Project.jpg')">
+            <img src="photos on website/Robotic-Arm-Project.jpg" alt="Robotic Arm Project"
+              style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class="gallery-item-overlay"><span>Robotic Arm Project</span></div>
+          </div>
+
+          <!-- Generator for 50+ Placeholder Photos (For Demo) -->
+          <script>
+            const grid = document.getElementById('full-gallery-grid');
+            for (let i = 1; i <= 50; i++) {
+              const div = document.createElement('div');
+              div.className = 'gallery-item reveal';
+              div.style = 'grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1;';
+              // i % 8 + 1 to rotate through available pics if you have more, or just placeholders
+              const picSrc = `photos on website/pic${(i % 12) + 1}.jpg`;
+              div.onclick = () => openLightbox(picSrc);
+              div.innerHTML = `
+                <img src="${picSrc}" alt="Memory ${i}" style="width: 100%; height: 100%; object-fit: cover; background: var(--dark-3);" />
+                <div class="gallery-item-overlay"><span>Event Memory #${i}</span></div>
+              `;
+              grid.appendChild(div);
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="mini-footer">&copy; 2026 Microsoft Ambassadors Club, <a href="https://www.lingayasvidyapeeth.edu.in/"
+        target="_blank" class="inline-link" style="text-decoration:none">Lingaya's Vidyapeeth</a> &nbsp;·&nbsp; <a
         onclick="goHome()">Back to Home</a></div>
   </div>
 
