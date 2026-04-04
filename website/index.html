@@ -1508,6 +1508,128 @@
       text-decoration-color: var(--ms-blue);
     }
 
+    /* PROJECT CARDS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-item {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all var(--tr);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .project-item:hover {
+      border-color: var(--ms-blue);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-item i {
+      font-size: 2rem;
+      color: var(--ms-blue);
+    }
+
+    .project-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .project-item p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .progress-container {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      height: 8px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--ms-blue), var(--ms-green));
+      border-radius: 10px;
+      transition: width 1s ease-in-out;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .team-working {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .team-working label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 800;
+      color: var(--ms-blue);
+    }
+
+    .team-avatars {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .team-v {
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--glass);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .project-img-container {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+      cursor: zoom-in;
+      background: var(--dark-3);
+    }
+
+    .project-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--tr);
+      filter: brightness(0.85);
+    }
+
+    .project-img-container:hover img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
     /* RESPONSIVE */
     @media(max-width:900px) {
       .nav-links {
@@ -1740,7 +1862,14 @@
               students gain practical experience with Microsoft tools, cloud computing, and modern collaboration — right
               here on campus.</p>
             <div class="about-features">
-              <div class="feature-pill"><i class="fa-solid fa-laptop-code"></i> Workshops & Projects</div>
+              <div class="feature-pill" onclick="showPage('projects')"
+                style="cursor:pointer;position:relative;padding-bottom:1.8rem;overflow:hidden">
+                <i class="fa-solid fa-laptop-code"></i> Workshops & Projects
+                <span
+                  style="position:absolute;bottom:0.4rem;right:0.6rem;font-size:0.6rem;color:var(--ms-blue);text-transform:uppercase;font-weight:700;letter-spacing:0.05em;display:flex;align-items:center;gap:4px">
+                  <i class="fa-solid fa-arrow-pointer" style="font-size:0.5rem"></i> Click here
+                </span>
+              </div>
               <div class="feature-pill"><i class="fa-solid fa-chalkboard-user"></i> Peer Mentorship</div>
               <div class="feature-pill"><i class="fa-solid fa-code"></i> Hackathons</div>
               <div class="feature-pill"><i class="fa-solid fa-ranking-star"></i> Contest Preps</div>
@@ -2270,6 +2399,241 @@
   </div>
 
 
+  <!-- ═══════════════ PROJECTS PAGE ═══════════════ -->
+  <div class="page" id="page-projects">
+    <div style="padding:120px 2rem 3rem;background:var(--dark-3)">
+      <div style="max-width:1100px;margin:0 auto">
+        <button class="back-link" onclick="goHome()"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
+        <div class="hero-badge" style="animation:none;margin-bottom:1.5rem"><i class="fa-solid fa-gear"></i> Active Projects
+        </div>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.3rem);font-weight:800;margin-bottom:1rem">
+          Club <span class="accent-blue">Projects</span></h1>
+        <p style="color:var(--text-muted);font-size:1rem;max-width:600px">Explore the innovative technological solutions
+          currently in development by our club members.</p>
+      </div>
+    </div>
+
+    <div style="padding:4rem 2rem;background:var(--dark-2);min-height:80vh">
+      <div class="section-inner">
+        <div class="project-grid">
+          <!-- Project 1: Smart Irrigation -->
+          <div class="project-item reveal">
+            <div class="project-img-container">
+              <img src="photos on website/smart-irrigation.jpg" alt="Smart Irrigation System Prototype"
+                onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600x400/111120/00a4ef?text=Final+Photo+Soon'" />
+            </div>
+            <i class="fa-solid fa-droplet" style="font-size:1.4rem"></i>
+            <h3>Smart Irrigation System</h3>
+            <div class="progress-wrap">
+              <div class="progress-text">
+                <span>Phase: Funded</span>
+                <span>100%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 100%; background: var(--ms-green);"></div>
+              </div>
+            </div>
+            <div class="team-working">
+              <label>Team Members</label>
+              <div class="team-avatars">
+                <div class="team-v"><i class="fa-solid fa-user"></i> Vansh Bhatia</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Pragya Singh</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: Fixed Wing Aircraft Surveillance Drone -->
+          <div class="project-item reveal">
+            <div class="project-img-container">
+              <img src="photos on website/fixed-wing-drone.jpg" alt="Fixed Wing Drone Prototype"
+                onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600x400/111120/00a4ef?text=Final+Photo+Soon'" />
+            </div>
+            <i class="fa-solid fa-plane" style="font-size:1.4rem"></i>
+            <h3>Fixed Wing Aircraft Surveillance Drone</h3>
+            <div class="progress-wrap">
+              <div class="progress-text">
+                <span>Status: 1st Prototype Working</span>
+                <span>50%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+              </div>
+            </div>
+            <div class="team-working">
+              <label>Team Members</label>
+              <div class="team-avatars">
+                <div class="team-v"><i class="fa-solid fa-user"></i> Vishal Singh</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Pratyaksh Negi</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Kartik</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: Smart Dustbin -->
+          <div class="project-item reveal">
+            <div class="project-img-container">
+              <img src="photos on website/smart-dustbin.jpg" alt="Smart Dustbin Prototype"
+                onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600x400/111120/00a4ef?text=Final+Photo+Soon'" />
+            </div>
+            <i class="fa-solid fa-trash-can" style="font-size:1.4rem"></i>
+            <h3>Smart Dustbin</h3>
+            <div class="progress-wrap">
+              <div class="progress-text">
+                <span>Status: 1st Prototype Working</span>
+                <span>50%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+              </div>
+            </div>
+            <div class="team-working">
+              <label>Team Members</label>
+              <div class="team-avatars">
+                <div class="team-v"><i class="fa-solid fa-user"></i> Anvi Nidhi</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Aakash Sharma</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: Spider Robot -->
+          <div class="project-item reveal">
+            <div class="project-img-container">
+              <img src="photos on website/1st-Prototype-of-the-Spiderobot.jpg" alt="Spider Robot Prototype"
+                onclick="openLightbox(this.src)" />
+            </div>
+            <i class="fa-solid fa-spider" style="font-size:1.4rem"></i>
+            <h3>Spider Robot</h3>
+            <div class="progress-wrap">
+              <div class="progress-text">
+                <span>Status: 1st Prototype Working</span>
+                <span>50%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+              </div>
+            </div>
+            <div class="team-working">
+              <label>Team Members</label>
+              <div class="team-avatars">
+                <div class="team-v"><i class="fa-solid fa-user"></i> Vansh Bhatia</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Pragya Singh</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: Robotic Arm -->
+          <div class="project-item reveal">
+            <div class="project-img-container">
+              <img src="photos on website/Robotic-Arm-Project.jpg" alt="Robotic Arm Prototype"
+                onclick="openLightbox(this.src)" />
+            </div>
+            <i class="fa-solid fa-hand-fist" style="font-size:1.4rem"></i>
+            <h3>Robotic Arm</h3>
+            <div class="progress-wrap">
+              <div class="progress-text">
+                <span>Status: 1st Prototype Working</span>
+                <span>50%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+              </div>
+            </div>
+            <div class="team-working">
+              <label>Team Members</label>
+              <div class="team-avatars">
+                <div class="team-v"><i class="fa-solid fa-user"></i> Aakash Sharma</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Umesh Singh</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: Pollu Wing Drone -->
+          <div class="project-item reveal">
+            <div class="project-img-container">
+              <img src="photos on website/pollu-wing-drone.jpg" alt="Pollu Wing Drone Prototype"
+                onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600x400/111120/00a4ef?text=Final+Photo+Soon'" />
+            </div>
+            <i class="fa-solid fa-plane-up" style="font-size:1.4rem"></i>
+            <h3>Pollu Wing Drone</h3>
+            <div class="progress-wrap">
+              <div class="progress-text">
+                <span>Status: 1st Prototype Working</span>
+                <span>50%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+              </div>
+            </div>
+            <div class="team-working">
+              <label>Team Members</label>
+              <div class="team-avatars">
+                <div class="team-v"><i class="fa-solid fa-user"></i> Aakash Sharma</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Umesh Singh</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: De-auth Watch -->
+          <div class="project-item reveal">
+            <div class="project-img-container">
+              <img src="photos on website/deauth-watch.jpg" alt="De-auth Watch Prototype"
+                onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600x400/111120/00a4ef?text=Final+Photo+Soon'" />
+            </div>
+            <i class="fa-solid fa-clock" style="font-size:1.4rem"></i>
+            <h3>De-auth Watch</h3>
+            <div class="progress-wrap">
+              <div class="progress-text">
+                <span>Status: 1st Prototype Working</span>
+                <span>50%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+              </div>
+            </div>
+            <div class="team-working">
+              <label>Team Members</label>
+              <div class="team-avatars">
+                <div class="team-v"><i class="fa-solid fa-user"></i> Aakash Sharma</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Pratyaksh Negi</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: Sahyog (App) -->
+          <div class="project-item reveal">
+            <div class="project-img-container">
+              <img src="photos on website/sahyog-app.jpg" alt="Sahyog App"
+                onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/600x400/111120/00a4ef?text=Final+Photo+Soon'" />
+            </div>
+            <i class="fa-solid fa-mobile-screen-button" style="font-size:1.4rem"></i>
+            <h3>Sahyog (App)</h3>
+            <div class="progress-wrap">
+              <div class="progress-text">
+                <span>Status: 1st Prototype Working</span>
+                <span>50%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+              </div>
+            </div>
+            <div class="team-working">
+              <label>Team Members</label>
+              <div class="team-avatars">
+                <div class="team-v"><i class="fa-solid fa-user"></i> Kartik</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Vansh Bhatia</div>
+                <div class="team-v"><i class="fa-solid fa-user"></i> Anvi Nidhi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mini-footer">&copy; 2026 Microsoft Ambassadors Club, <a href="https://www.lingayasvidyapeeth.edu.in/"
+        target="_blank" class="inline-link" style="text-decoration:none">Lingaya's Vidyapeeth</a> &nbsp;·&nbsp; <a
+        onclick="goHome()">Back to Home</a></div>
+  </div>
+
+
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
@@ -2278,14 +2642,35 @@
 
   <script>
     /* ── PAGE ROUTING ── */
-    function showPage(id) {
+    function showPage(id, push = true) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page-' + id).classList.add('active');
+      const activePage = document.getElementById('page-' + id);
+      if (activePage) activePage.classList.add('active');
+
+      if (push) {
+        history.pushState({ page: id }, '', (id === 'home' ? '#' : '#' + id));
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
       document.querySelectorAll('.success-msg').forEach(el => el.style.display = 'none');
       setTimeout(initReveal, 100);
     }
+
     function goHome() { showPage('home') }
+
+    /* ── HANDLE BACK BUTTON ── */
+    window.onpopstate = function (event) {
+      if (event.state && event.state.page) {
+        showPage(event.state.page, false);
+      } else {
+        showPage('home', false);
+      }
+    };
+
+    /* Initialize Home state in history */
+    if (!history.state) {
+      history.replaceState({ page: 'home' }, '', '#');
+    }
 
     /* ── SCROLL TO ── */
     function sTo(sel) {
