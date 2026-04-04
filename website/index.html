@@ -1677,8 +1677,21 @@
       .team-row.r2,
       .team-row.r2x,
       .team-row.r2b {
-        grid-template-columns: 1fr;
-        max-width: 320px
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        max-width: 100%;
+      }
+
+      .team-card h3 {
+        font-size: 0.82rem;
+      }
+
+      .team-role {
+        font-size: 0.68rem;
+      }
+
+      .team-body {
+        padding: 0.8rem 0.5rem;
       }
 
       .tech-grid {
@@ -1752,7 +1765,28 @@
       }
 
       .about-features {
-        grid-template-columns: 1fr
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+
+      .feature-pill {
+        padding: 0.6rem 0.8rem 1.4rem;
+        font-size: 0.78rem;
+      }
+
+      /* Core Member override for mobile */
+      #team .team-row[style*="auto-fit"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .project-item {
+        padding: 1.2rem;
       }
     }
   </style>
